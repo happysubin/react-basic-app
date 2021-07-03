@@ -3,24 +3,51 @@ import React from "react";
 function Ex1() {
   return <h2>hi everyOne!</h2>;
 }
-function Food({ fav, name }) {
-  //obj안에 fav라는 프로퍼티가 있다.
+function Food({ image, name }) {
   return (
-    <h3>
-      I LOVE {fav}!!!! {name}
-    </h3>
+    <div>
+      <h3>I LOVE {name}!!!!</h3>
+      <img src={image} />
+    </div>
   );
 }
+
+const foodILike = [
+  {
+    name: "Kimchi",
+    image:
+      "http://aeriskitchen.com/wp-content/uploads/2008/09/kimchi_bokkeumbap_02-.jpg",
+  },
+  {
+    name: "Samgyeopsal",
+    image:
+      "https://3.bp.blogspot.com/-hKwIBxIVcQw/WfsewX3fhJI/AAAAAAAAALk/yHxnxFXcfx4ZKSfHS_RQNKjw3bAC03AnACLcBGAs/s400/DSC07624.jpg",
+  },
+  {
+    name: "Bibimbap",
+    image:
+      "http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/12/03/bibimbop-ck-x.jpg?itok=RoXlp6Xb",
+  },
+  {
+    name: "Doncasu",
+    image:
+      "https://s3-media3.fl.yelpcdn.com/bphoto/7F9eTTQ_yxaWIRytAu5feA/ls.jpg",
+  },
+  {
+    name: "Kimbap",
+    image:
+      "http://cdn2.koreanbapsang.com/wp-content/uploads/2012/05/DSC_1238r-e1454170512295.jpg",
+  },
+];
 
 function App() {
   return (
     <div>
       <h1>Hello Wolrd!!!!</h1>
       <Ex1></Ex1>
-      <Food fav="kimchi" name="first"></Food>
-      <Food fav="chicken"></Food>
-      <Food fav="ice-cream"></Food>
-      <Food fav="kimbap"></Food>
+      {foodILike.map((food) => {
+        return <Food name={food.name} image={food.image}></Food>;
+      })}
     </div>
   );
 }
