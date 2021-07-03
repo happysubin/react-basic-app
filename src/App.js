@@ -1,3 +1,4 @@
+import { current } from "immer";
 import React from "react";
 
 //component의 데이터를 바꾸기
@@ -7,10 +8,18 @@ class App extends React.Component {
     count: 0,
   };
   add = () => {
-    console.log("add");
+    //this.state.count = +1;  state를 바로 직접적으로 바꿀 수 없다.
+    //this.setState({ count: this.state.count + 1 }); 이건 좋은코드는 아니다.
+    this.setState((current) => ({
+      count: current.count + 1,
+    }));
   };
   minus = () => {
-    console.log("minus");
+    //this.state.count = -1; state를 바로 직접적으로 바꿀 수 없다.
+    //this.setState({ count: this.state.count - 1 }); 이건 좋은코드는 아니다.
+    this.setState((current) => ({
+      count: current.count - 1,
+    }));
   };
   render() {
     return (
